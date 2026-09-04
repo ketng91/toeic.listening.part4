@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Luyện nghe TOEIC Part 4 - Lớp Anh thầy Kết</title>
+
+<style>
+
+/* ==========================================================
+   1. BIẾN MÀU
+   ========================================================== */
+
+:root{
+  --primary:#183b63;
+  --primary-light:#eaf2fb;
+
+  --border:#b8c4d1;
+
+  --text:#17212b;
+  --muted:#64748b;
+
+  --green:#16803c;
+  --green-bg:#eaf8ef;
+
+  --red:#c62828;
+  --red-bg:#fff0f0;
+
+  --card:#ffffff;
+
+  --shadow:0 5px 18px rgba(15,35,55,.08);
+}
+
+
+/* ==========================================================
+   2. RESET
+   ========================================================== */
+
+*{
+  box-sizing:border-box;
+}
+
+
+/* ==========================================================
+   3. BODY
+   ========================================================== */
+
+body{
+  margin:0;
+
+  background:#f5f7fa;
+
+  color:var(--text);
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  line-height:1.55;
+}
+
+
+/* ==========================================================
+   4. CONTAINER
+   ========================================================== */
+
+.container{
+  width:min(1100px,calc(100% - 28px));
+
+  margin:0 auto;
+
+  padding:22px 0 45px;
+}
+
+
+/* ==========================================================
+   5. HEADER TRANG
+   ========================================================== */
+
+header{
+  background:var(--primary);
+
+  color:white;
+
+  border-radius:14px;
+
+  padding:20px 24px;
+
+  margin-bottom:20px;
+
+  box-shadow:var(--shadow);
+}
+
+header h1{
+  margin:0;
+
+  font-size:clamp(22px,4vw,32px);
+
+  text-align:center;
+}
+
+header p{
+  margin:6px 0 0;
+
+  text-align:center;
+
+  opacity:.9;
+
+  font-size:14px;
+}
+
+
+/* ==========================================================
+   6. KHUNG MỖI BÀI
+   ========================================================== */
+
+.exercise{
+  background:var(--card);
+
+  border:1px solid #d9e0e7;
+
+  border-radius:14px;
+
+  margin-bottom:18px;
+
+  box-shadow:var(--shadow);
+
+  overflow:hidden;
+}
+
+
+/* ==========================================================
+   7. HEADER BÀI
+   ========================================================== */
+
+.exercise-header{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:12px;
+
+  padding:14px 16px;
+
+  background:var(--primary-light);
+
+  border-bottom:1px solid #d5e0eb;
+}
+
+
+/* ==========================================================
+   8. TÊN BÀI
+   ========================================================== */
+
+.exercise-title-wrap{
+  cursor:pointer;
+
+  flex:1;
+
+  min-width:0;
+
+  padding:3px 0;
+
+  user-select:none;
+}
+
+.exercise-title-wrap:hover .exercise-title{
+  color:#245b8f;
+}
+
+.exercise-title{
+  font-weight:800;
+
+  font-size:18px;
+}
+
+.exercise-number{
+  font-size:13px;
+
+  color:var(--muted);
+
+  margin-top:2px;
+}
+
+
+/* ==========================================================
+   9. MŨI TÊN
+   ========================================================== */
+
+.toggle-icon{
+  display:inline-block;
+
+  width:22px;
+
+  font-size:17px;
+
+  color:var(--primary);
+
+  transition:transform .15s ease;
+}
+
+
+/* ==========================================================
+   10. AUDIO + SPEED
+   ========================================================== */
+
+.controls{
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  flex-shrink:0;
+}
+
+.audio-player{
+  height:42px;
+
+  width:300px;
+
+  max-width:100%;
+}
+
+.speed-select{
+  height:42px;
+
+  border:1px solid #8fa2b5;
+
+  background:white;
+
+  border-radius:8px;
+
+  font-size:15px;
+
+  padding:0 10px;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+
+/* ==========================================================
+   11. NỘI DUNG BÀI
+   ========================================================== */
+
+/*
+   Mặc định ẨN
+*/
+
+.exercise-body{
+  display:none;
+
+  padding:16px;
+}
+
+
+/*
+   Khi có class OPEN thì hiện
+*/
+
+.exercise.open .exercise-body{
+  display:block;
+}
+
+
+/* ==========================================================
+   12. KHUNG LISTENING
+   ========================================================== */
+
+.listen-box{
+  border:1px solid #c7ced6;
+
+  background:#fff;
+
+  padding:13px 14px 10px;
+
+  border-radius:8px;
+
+  font-size:17px;
+}
+
+
+/* ==========================================================
+   13. TIÊU ĐỀ CLOZE
+   ========================================================== */
+
+.cloze-title{
+  font-weight:800;
+
+  color:var(--primary);
+
+  margin-bottom:10px;
+
+  font-size:16px;
+}
+
+
+/* ==========================================================
+   14. TRANSCRIPT
+   ========================================================== */
+
+.transcript{
+  font-size:16px;
+
+  line-height:1.9;
+}
+
+.transcript p{
+  margin:0 0 14px;
+}
+
+.transcript strong{
+  color:var(--primary);
+}
+
+
+/* ==========================================================
+   15. Ô TRỐNG
+   ========================================================== */
+
+.blank-wrap{
+  display:inline-flex;
+
+  align-items:baseline;
+
+  gap:4px;
+
+  white-space:nowrap;
+}
+
+.answer-input{
+  width:135px;
+
+  max-width:42vw;
+
+  border:0;
+
+  border-bottom:2px dotted #6b7280;
+
+  outline:none;
+
+  background:#fff;
+
+  font:inherit;
+
+  color:#111827;
+
+  padding:0 4px 1px;
+
+  text-align:center;
+}
+
+.answer-input:focus{
+  border-bottom:2px solid var(--primary);
+
+  background:#f8fbff;
+}
+
+
+/* ==========================================================
+   16. ĐÚNG
+   ========================================================== */
+
+.answer-input.correct{
+  color:var(--green);
+
+  border-bottom-color:var(--green);
+
+  background:var(--green-bg);
+
+  font-weight:700;
+}
+
+
+/* ==========================================================
+   17. SAI
+   ========================================================== */
+
+.answer-input.wrong{
+  color:var(--red);
+
+  border-bottom-color:var(--red);
+
+  background:var(--red-bg);
+
+  text-decoration:line-through;
+
+  text-decoration-thickness:2px;
+}
+
+
+/* ==========================================================
+   18. FEEDBACK
+   ========================================================== */
+
+.feedback{
+  display:inline;
+
+  font-weight:700;
+
+  font-size:15px;
+}
+
+.feedback.correct{
+  color:var(--green);
+}
+
+.feedback.wrong{
+  color:var(--red);
+}
+
+.correct-answer{
+  color:var(--red);
+
+  font-weight:700;
+
+  margin-left:3px;
+}
+
+
+/* ==========================================================
+   19. NOTE
+   ========================================================== */
+
+.listen-note{
+  margin:12px 0 0;
+
+  color:var(--muted);
+
+  font-size:13px;
+}
+
+
+/* ==========================================================
+   20. ACTIONS
+   ========================================================== */
+
+.actions{
+  display:flex;
+
+  justify-content:flex-end;
+
+  align-items:center;
+
+  gap:12px;
+
+  margin-top:12px;
+}
+
+.score{
+  font-weight:700;
+
+  color:var(--primary);
+}
+
+.show-answer{
+  border:1px solid #244d78;
+
+  background:white;
+
+  color:#17212b;
+
+  padding:10px 15px;
+
+  font-size:15px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  border-radius:7px;
+}
+
+.show-answer:hover{
+  background:#eef5fb;
+}
+
+
+/* ==========================================================
+   21. TỔNG ĐIỂM
+   ========================================================== */
+
+.total-result{
+  display:none;
+
+  position:sticky;
+
+  bottom:12px;
+
+  z-index:20;
+
+  background:white;
+
+  border:2px solid var(--primary);
+
+  border-radius:12px;
+
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
+
+  padding:13px 16px;
+
+  text-align:center;
+
+  font-weight:800;
+
+  margin-top:5px;
+}
+
+.total-result.show{
+  display:block;
+}
+
+
+/* ==========================================================
+   22. MOBILE
+   ========================================================== */
+
+@media(max-width:700px){
+
+  .container{
+    width:calc(100% - 14px);
+
+    padding-top:8px;
+  }
+
+
+  header{
+    border-radius:10px;
+
+    padding:15px 12px;
+
+    margin-bottom:12px;
+  }
+
+
+  header h1{
+    font-size:22px;
+  }
+
+
+  header p{
+    font-size:13px;
+  }
+
+
+  .exercise{
+    border-radius:10px;
+
+    margin-bottom:14px;
+  }
+
+
+  .exercise-header{
+    flex-direction:column;
+
+    align-items:stretch;
+
+    padding:11px;
+  }
+
+
+  .exercise-title{
+    font-size:16px;
+  }
+
+
+  .exercise-number{
+    font-size:12px;
+  }
+
+
+  .controls{
+    width:100%;
+  }
+
+
+  .audio-player{
+    flex:1;
+
+    width:auto;
+
+    min-width:0;
+  }
+
+
+  .speed-select{
+    width:95px;
+
+    flex-shrink:0;
+  }
+
+
+  .exercise-body{
+    padding:10px;
+  }
+
+
+  .listen-box{
+    padding:9px;
+
+    font-size:16px;
+  }
+
+
+  .transcript{
+    font-size:15.5px;
+
+    line-height:1.8;
+  }
+
+
+  .transcript p{
+    margin-bottom:11px;
+  }
+
+
+  .answer-input{
+    width:110px;
+
+    max-width:34vw;
+  }
+
+
+  .actions{
+    flex-direction:column;
+
+    align-items:stretch;
+  }
+
+
+  .score{
+    text-align:right;
+  }
+
+
+  .show-answer{
+    width:100%;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- ======================================================
+       HEADER
+       ====================================================== -->
+
+  <header>
+
+<h1>
+  🎧 Luyện nghe TOEIC - Lớp Anh thầy Kết
+</h1>
+
+<p>
+  Nghe và điền từ còn thiếu • Có thể chỉnh tốc độ audio
+</p>
+
+  </header>
+
+  <!-- ======================================================
+       DANH SÁCH BÀI
+       ====================================================== -->
+
+  <main id="exerciseContainer"></main>
+
+  <!-- ======================================================
+       TỔNG ĐIỂM
+       ====================================================== -->
+
+  <div
+    id="totalResult"
+    class="total-result">
+  </div>
+
+</div>
+
+<script>
+
+
+/* ==========================================================
+   1. CẤU HÌNH AUDIO
+   ========================================================== */
+
+const AUDIO_FOLDER = "";
+
+
+/* ==========================================================
+   2. DỮ LIỆU BÀI NGHE
+   ========================================================== */
+
+const EXERCISES = [
+
+  {
+    id:"E26-T01-71-73",
+
+    title:"Test 1: Bài nghe 1",
+
+    note:"",
+
+transcript: `
+  <p>You've reached Select Repair Service. We specialize in all makes and models of 
+  <span class="blank" data-answer="automobiles"></span>.
+  Our factory-trained specialists will keep your 
+  <span class="blank" data-answer="vehicle"></span>
+   running in top condition.</p>
+
+  <p>As an added benefit, we offer extended 
+  <span class="blank" data-answer="warranties"></span> 
+  on all vehicles we service. You can enjoy three extra years of worry-free driving.</p>
+
+  <p>Please note that Select Repair Service will be closing on Friday, June 30, so we can complete our quarterly 
+  <span class="blank" data-answer="inventory"></span> 
+  of supplies. Thank you for your 
+  <span class="blank" data-answer="patience"></span>. 
+  A representative will be with you shortly.</p>
+`
+  },
+{
+    id: "E26-T01-74-76",
+    title: "Test 1: Bài nghe 2",
+    note: "",
+    transcript: `
+  <p>Welcome, new employees! My name is Diego, and I facilitate all
+  <span class="blank" data-answer="orientation"></span> 
+  sessions. Before we start today, you will need to set up your employee 
+  <span class="blank" data-answer="account"></span>.</p>
+
+  <p>If you look at the first page of your training binder, you'll see your username and a temporary
+  <span class="blank" data-answer="password"></span>.
+  Please open the laptops you were given this morning and log in using those 
+  <span class="blank" data-answer="credentials"></span>. 
+  You will then be prompted to create your own password.</p>
+
+  <p>Once that's complete, you'll have 
+  <span class="blank" data-answer="access"></span> 
+  to all your department's files. Please note that you can only access them from your 
+  <span class="blank" data-answer="company computer"></span>.</p>
+
+`
+  },
+
+
+];
+
+
+/* ==========================================================
+   3. ELEMENT
+   ========================================================== */
+
+const container =
+  document.getElementById("exerciseContainer");
+
+const totalResult =
+  document.getElementById("totalResult");
+
+
+/* ==========================================================
+   4. CHUẨN HÓA ĐÁP ÁN
+   ========================================================== */
+
+function normalizeAnswer(value){
+
+  return String(value ?? "")
+
+    .trim()
+
+    .toLowerCase()
+
+    .replace(/[’‘]/g,"'")
+
+    .replace(/\s+/g," ");
+}
+
+
+/* ==========================================================
+   5. ESCAPE HTML
+   ========================================================== */
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#039;");
+}
+
+
+/* ==========================================================
+   6. KIỂM TRA ĐÁP ÁN
+   ========================================================== */
+
+function isCorrect(userAnswer,correctAnswer){
+
+  return (
+    normalizeAnswer(userAnswer)
+    ===
+    normalizeAnswer(correctAnswer)
+  );
+}
+
+
+/* ==========================================================
+   7. TẠO Ô TRỐNG
+   ========================================================== */
+
+function renderTranscript(transcript){
+
+  const temp =
+    document.createElement("div");
+
+
+  temp.innerHTML =
+    transcript;
+
+
+  const blanks =
+    temp.querySelectorAll(".blank");
+
+
+  blanks.forEach(
+    function(blank,index){
+
+      const answer =
+        blank.dataset.answer || "";
+
+
+      blank.outerHTML = `
+
+        <span class="blank-wrap">
+
+          <input
+
+            type="text"
+
+            class="answer-input"
+
+            autocomplete="off"
+
+            autocapitalize="none"
+
+            spellcheck="false"
+
+            data-blank-index="${index}"
+
+            data-answer="${escapeHTML(answer)}"
+
+            aria-label="Ô trống ${index + 1}"
+
+          >
+
+          <span
+
+            class="feedback"
+
+            data-feedback="${index}"
+
+          ></span>
+
+        </span>
+
+      `;
+
+    }
+  );
+
+
+  return temp.innerHTML;
+}
+
+
+/* ==========================================================
+   8. HIỂN THỊ BÀI
+   ========================================================== */
+
+function renderExercises(){
+
+  if(!container){
+
+    console.error(
+      "Không tìm thấy #exerciseContainer"
+    );
+
+    return;
+  }
+
+
+  container.innerHTML =
+    EXERCISES.map(
+
+      function(exercise,exIndex){
+
+        return `
+
+          <section
+            class="exercise"
+            data-exercise="${exIndex}"
+          >
+
+
+            <!-- ================= HEADER ================= -->
+
+            <div class="exercise-header">
+
+
+              <!-- ================ TÊN BÀI ================ -->
+
+              <div
+                class="exercise-title-wrap"
+                data-toggle="${exIndex}"
+              >
+
+                <div class="exercise-title">
+
+                  <span class="toggle-icon">▸</span>
+
+                  ${escapeHTML(exercise.title)}
+
+                </div>
+
+
+                <div class="exercise-number">
+
+                  ${escapeHTML(exercise.id)}
+
+                </div>
+
+              </div>
+
+
+              <!-- ================= AUDIO ================= -->
+
+              <div class="controls">
+
+
+                <audio
+
+                  id="audio-${exIndex}"
+
+                  class="audio-player"
+
+                  preload="metadata"
+
+                  controls
+
+                  src="${AUDIO_FOLDER}${exercise.id}.mp3"
+
+                ></audio>
+
+
+                <!-- ================ SPEED ================ -->
+
+                <select
+                  class="speed-select"
+                  data-speed="${exIndex}"
+                  aria-label="Tốc độ audio"
+                >
+
+                  <option value="0.8">
+                    0.8x
+                  </option>
+
+                  <option value="0.9">
+                    0.9x
+                  </option>
+
+                  <option value="1" selected>
+                    1x
+                  </option>
+
+                  <option value="1.1">
+                    1.1x
+                  </option>
+
+                  <option value="1.2">
+                    1.2x
+                  </option>
+
+                  <option value="1.25">
+                    1.25x
+                  </option>
+
+                </select>
+
+              </div>
+
+            </div>
+
+
+            <!-- ================= BODY ================= -->
+
+            <div class="exercise-body">
+
+
+              <div class="listen-box cloze-box">
+
+
+                <div class="cloze-title">
+
+                  🎧 Nghe và điền từ còn thiếu
+
+                </div>
+
+
+                <div class="transcript">
+
+                  ${renderTranscript(exercise.transcript)}
+
+                </div>
+
+
+                ${
+                  exercise.note
+
+                  ?
+
+                  `
+                    <div class="listen-note">
+
+                      ${escapeHTML(exercise.note)}
+
+                    </div>
+                  `
+
+                  :
+
+                  ""
+                }
+
+
+              </div>
+
+
+              <!-- ================= CHẤM ================= -->
+
+              <div class="actions">
+
+
+                <div
+                  class="score"
+                  data-score
+                >
+
+                  Chưa chấm
+
+                </div>
+
+
+                <button
+                  type="button"
+                  class="show-answer"
+                  data-check="${exIndex}"
+                >
+
+                  Show answers
+
+                </button>
+
+
+              </div>
+
+
+            </div>
+
+          </section>
+
+        `;
+
+      }
+
+    ).join("");
+}
+
+
+/* ==========================================================
+   9. MỞ / ĐÓNG BÀI
+   ========================================================== */
+
+function toggleExercise(index){
+
+  const section =
+    document.querySelector(
+      `.exercise[data-exercise="${index}"]`
+    );
+
+
+  if(!section){
+    return;
+  }
+
+
+  const isOpen =
+    section.classList.toggle("open");
+
+
+  const icon =
+    section.querySelector(".toggle-icon");
+
+
+  if(icon){
+
+    icon.textContent =
+      isOpen ? "▾" : "▸";
+  }
+
+}
+
+
+/* ==========================================================
+   10. ĐỔI SPEED
+   ========================================================== */
+
+function changeSpeed(index,value){
+
+  const audio =
+    document.getElementById(
+      `audio-${index}`
+    );
+
+
+  if(!audio){
+    return;
+  }
+
+
+  audio.playbackRate =
+    Number(value);
+}
+
+
+/* ==========================================================
+   11. CHẤM BÀI
+   ========================================================== */
+
+function checkExercise(index){
+
+  const section =
+    document.querySelector(
+      `.exercise[data-exercise="${index}"]`
+    );
+
+  if(!section){
+    return;
+  }
+
+
+  const button =
+    section.querySelector(".show-answer");
+
+
+  /* ======================================================
+     NẾU ĐANG HIỆN ĐÁP ÁN → ẨN ĐÁP ÁN
+     ====================================================== */
+
+  const isShowingAnswers =
+    section.classList.contains("answers-shown");
+
+
+  if(isShowingAnswers){
+
+    section.classList.remove(
+      "answers-shown"
+    );
+
+
+    section
+      .querySelectorAll(".answer-input")
+      .forEach(function(input){
+
+        input.classList.remove(
+          "correct",
+          "wrong"
+        );
+
+      });
+
+
+    section
+      .querySelectorAll(".feedback")
+      .forEach(function(feedback){
+
+        feedback.className =
+          "feedback";
+
+        feedback.innerHTML =
+          "";
+
+      });
+
+
+    const score =
+      section.querySelector(
+        "[data-score]"
+      );
+
+
+    if(score){
+
+      score.textContent =
+        "Chưa chấm";
+
+    }
+
+
+    if(button){
+
+      button.textContent =
+        "Show answers";
+
+    }
+
+
+    updateTotalScore();
+
+    return;
+  }
+
+
+  /* ======================================================
+     NẾU ĐANG ẨN → HIỆN ĐÁP ÁN
+     ====================================================== */
+
+  const inputs =
+    section.querySelectorAll(
+      ".answer-input"
+    );
+
+
+  let correct = 0;
+
+  const total =
+    inputs.length;
+
+
+  inputs.forEach(
+
+    function(input,blankIndex){
+
+      const correctAnswer =
+        input.dataset.answer || "";
+
+
+      const feedback =
+        section.querySelector(
+          `[data-feedback="${blankIndex}"]`
+        );
+
+
+      /* RESET */
+
+      input.classList.remove(
+        "correct",
+        "wrong"
+      );
+
+
+      if(feedback){
+
+        feedback.className =
+          "feedback";
+
+        feedback.innerHTML =
+          "";
+
+      }
+
+
+      /* CHECK */
+
+      if(
+        isCorrect(
+          input.value,
+          correctAnswer
+        )
+      ){
+
+        correct++;
+
+
+        input.classList.add(
+          "correct"
+        );
+
+
+        if(feedback){
+
+          feedback.classList.add(
+            "correct"
+          );
+
+          feedback.innerHTML =
+            "✓";
+
+        }
+
+      }
+
+      else{
+
+        input.classList.add(
+          "wrong"
+        );
+
+
+        if(feedback){
+
+          feedback.classList.add(
+            "wrong"
+          );
+
+          feedback.innerHTML =
+
+            `→ <span class="correct-answer">${
+              escapeHTML(correctAnswer)
+            }</span>`;
+
+        }
+
+      }
+
+    }
+
+  );
+
+
+  /* ======================================================
+     ĐÁNH DẤU ĐANG HIỆN ĐÁP ÁN
+     ====================================================== */
+
+  section.classList.add(
+    "answers-shown"
+  );
+
+
+  /* ======================================================
+     ĐỔI TÊN NÚT
+     ====================================================== */
+
+  if(button){
+
+    button.textContent =
+      "Hide answers";
+
+  }
+
+
+  /* ======================================================
+     HIỆN ĐIỂM
+     ====================================================== */
+
+  const score =
+    section.querySelector(
+      "[data-score]"
+    );
+
+
+  if(score){
+
+    score.textContent =
+      `Điểm: ${correct}/${total}`;
+
+  }
+
+
+  updateTotalScore();
+
+}
+/* ==========================================================
+   12. TỔNG ĐIỂM
+   ========================================================== */
+
+function updateTotalScore(){
+
+  if(!totalResult){
+    return;
+  }
+
+
+  let correct = 0;
+
+  let total = 0;
+
+  let checkedExercises = 0;
+
+
+  EXERCISES.forEach(
+
+    function(exercise,index){
+
+      const section =
+        document.querySelector(
+          `.exercise[data-exercise="${index}"]`
+        );
+
+
+      if(!section){
+        return;
+      }
+
+
+      const score =
+        section.querySelector(
+          "[data-score]"
+        );
+
+
+      if(!score){
+        return;
+      }
+
+
+      const match =
+        score.textContent.match(
+          /(\d+)\/(\d+)/
+        );
+
+
+      if(match){
+
+        checkedExercises++;
+
+
+        correct +=
+          Number(match[1]);
+
+
+        total +=
+          Number(match[2]);
+      }
+
+    }
+
+  );
+
+
+  if(checkedExercises === 0){
+
+    totalResult.classList.remove(
+      "show"
+    );
+
+    return;
+  }
+
+
+  totalResult.classList.add(
+    "show"
+  );
+
+
+  totalResult.textContent =
+
+    `Đã chấm ${checkedExercises}/${EXERCISES.length} bài • ` +
+
+    `Tổng: ${correct}/${total}`;
+}
+
+
+/* ==========================================================
+   13. CLICK MỞ / ĐÓNG
+   ========================================================== */
+
+document.addEventListener(
+  "click",
+
+  function(event){
+
+    const title =
+      event.target.closest(
+        ".exercise-title-wrap"
+      );
+
+
+    if(title){
+
+      const index =
+        Number(
+          title.dataset.toggle
+        );
+
+
+      toggleExercise(index);
+
+      return;
+    }
+
+
+    /* ==============================================
+       SHOW ANSWERS
+       ============================================== */
+
+    const button =
+      event.target.closest(
+        ".show-answer"
+      );
+
+
+    if(button){
+
+      const index =
+        Number(
+          button.dataset.check
+        );
+
+
+      checkExercise(index);
+
+      return;
+    }
+
+  }
+);
+
+
+/* ==========================================================
+   14. SPEED
+   ========================================================== */
+
+document.addEventListener(
+  "change",
+
+  function(event){
+
+    const select =
+      event.target.closest(
+        ".speed-select"
+      );
+
+
+    if(!select){
+      return;
+    }
+
+
+    const index =
+      Number(
+        select.dataset.speed
+      );
+
+
+    changeSpeed(
+      index,
+      select.value
+    );
+
+  }
+);
+
+
+/* ==========================================================
+   15. ENTER ĐỂ CHẤM
+   ========================================================== */
+
+document.addEventListener(
+  "keydown",
+
+  function(event){
+
+    if(event.key !== "Enter"){
+      return;
+    }
+
+
+    const input =
+      event.target.closest(
+        ".answer-input"
+      );
+
+
+    if(!input){
+      return;
+    }
+
+
+    const section =
+      input.closest(
+        ".exercise"
+      );
+
+
+    if(!section){
+      return;
+    }
+
+
+    const index =
+      Number(
+        section.dataset.exercise
+      );
+
+
+    checkExercise(index);
+
+  }
+);
+
+
+/* ==========================================================
+   16. KHỞI ĐỘNG
+   ========================================================== */
+
+renderExercises();
+
+
+</script>
+
+</body>
+</html>
